@@ -1,0 +1,276 @@
+body {
+    background-color: rgb(240, 242, 245);
+    display: grid;
+    grid-template-columns: 10% 40% 40% 10%;
+    grid-template-rows: 10% 75% 25% 15%;
+    height: 100%;
+    overflow-x: hidden;
+
+}
+
+#account-side {
+    /* width: auto;
+    height: auto; */
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    /* background-color: palegoldenrod; */
+}
+#login-side{
+     /* background-color: red;  */
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+#annex-side{
+    /* background-color: yellow; */
+     grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 4;
+    grid-row-end: 5; 
+    padding-left: 10%;
+    height: fit-content;
+    color: #737373;
+}
+/*-------------------------------- PARTIE COMPTE ------------------------------------------------*/
+#facebook-title {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:#1877f2;
+    font-size: 4vw;
+    font-weight: 700;
+    margin: unset;
+    
+}
+#little-text-1{
+    margin: unset;
+    font-weight: 500;
+    font-size: 1.7vw;
+}
+
+/*----------------------------------- PARTIE CONNEXION --------------------------------------------*/
+#login-side
+{
+    text-align: center;
+}
+#login-box
+{
+
+    background-color: white;
+    /* height: 80%; */
+    width: 80%;
+    margin: 10%;
+    border-radius: 10px 10px 10px 10px;
+    border-bottom: 2px solid black;
+    border-left: 0.5px  solid rgb(112, 111, 111);
+    border-right: 0.5px solid rgb(112, 111, 111);
+    box-shadow: 0px 8px 20px black;
+    justify-content: stretch;
+    align-items: flex-start;
+    align-content: flex-start;
+    margin-bottom: 2%;
+    text-align: center;
+    padding-top:5%;
+}
+.login-field{
+    width: 85%;
+    height: 60px;
+    margin-left: 4%;
+    margin-bottom: 2vw;
+    border-radius: 5px;
+    border: 0.5px solid #dddfe2;
+    padding-left: 10px;
+    font-size: 90%;
+    color: grey;
+}
+#line
+{
+    width: 80%;
+    margin-left: 5%;
+    padding: 10px;
+    border: none;
+    border-top: 2px solid #eaebee;
+}
+#login-button
+{
+
+    height: 50px; 
+    width: 75%;
+    border: unset;  
+    background-color: #1877f2;
+    border-radius: 5px;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+
+    text-align: center;
+    
+}
+#login-button:hover
+{
+    transition: 250ms;
+    background-color: #1868cf;
+    width: 80%;
+    height: 55px;
+    cursor: pointer;
+}
+#forgot-pswd
+{
+   color: #1877f2;
+   margin-bottom: unset;
+}
+#forgot-pswd:hover
+{
+   text-decoration: underline;
+   cursor: pointer;
+}
+#account-creation-button
+{
+    text-overflow: clip;
+    width: 50%;
+    height: max-content;
+    /* margin-left: 25%;   */
+    border: unset;  
+    background-color: #42b72a;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+
+}
+#account-creation-button:hover
+{
+    transition: 250ms;
+    width: 60%;
+    padding: 20px;
+    /* margin-left: 20%; */
+    background-color: #3ba826;
+    cursor: pointer;
+}
+#creation-page
+{
+    margin: unset;
+}
+#create-page:hover
+{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/*-------------------------------- PARTIE ANNEXE -----------------------------------------------*/
+#language-side
+{
+    display: flex;
+    flex-wrap: unset;
+    justify-content: stretch;
+}
+#language-side > p
+{
+ 
+    margin-right: 8px;
+    margin-bottom: 0%;
+}
+#line2
+{
+    display: block;
+    border: 0.01mm solid #dadde1;
+    margin-right: 20%;
+
+}
+#subsdiary-side > p
+{
+    margin: 0;
+    padding: 0;
+    padding-left: 10px;
+    display: block;
+    float: left;
+
+}
+/*-------------------------------- MEDIA QUERY -----------------------------------------------*/
+
+@media only screen and (max-width: 1100px)
+{
+
+    body{
+        display: grid;
+        grid-row: 15% 100% 25%;
+        height: 1000px;
+        /* background-color: black; */
+    }
+    #account-side
+    {
+
+
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 1;
+        grid-column-end:5 ;
+
+    }
+    #facebook-title {
+        margin-left: 500px;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color:#1877f2;
+        font-size: 30px;
+        font-weight: 700;
+        margin: unset;
+        grid-column-start: 1;
+        grid-column-end:5 ;
+        align-self: center;
+        text-align: center;
+    }
+    #little-text-1
+    {
+        font-size: 17px;
+        grid-row-start:1 ;
+        grid-row-end:2 ;
+        grid-column-start: 1;
+        grid-column-end:5 ;
+        text-align: center;
+       
+    }
+
+
+    #subsdiary-side
+    {
+        margin-right: 100px;
+
+    }
+
+    #account-side
+    {
+        margin-top: 15%;
+        grid-row-start: 2;
+        grid-row-end: 3;  
+        grid-column-start: 1;
+        grid-column-end:5 ;    
+    }
+    #annex-side
+    {
+        grid-row-start: 3;
+        grid-row-end: 4; 
+        grid-column-start: 1;
+        grid-column-end:5 ;       
+    }
+    #language-side
+    {
+        margin-right: 100px;
+         display: inline-flex;
+         flex-wrap: wrap;
+        justify-content: center; 
+    }
+    #login-box
+    {
+        margin-top: 0%;
+        height: max-content;
+        padding-bottom: 5%;
+    }
+    #login-side
+    {
+        margin: 0%;
+    }
+}

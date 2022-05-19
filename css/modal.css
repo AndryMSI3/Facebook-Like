@@ -1,0 +1,223 @@
+ /* The Modal (background) */
+ .modal-account-creation{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(245, 245, 245, 0.862); /* Fallback color */
+
+
+  }
+  body
+  {
+    background-color: #f0f2f5;
+  }
+  a
+  {
+    text-decoration: none;
+  }
+  a:hover
+  {
+    text-decoration: underline;
+  }
+  /*------------------------------------- Modal Content/Box----------------------------------- */
+  .modal-content{
+    background-color: #fefefe;
+    margin: 5% auto; /* 15% from the top and centered */
+    padding: 20px;
+    width: 35%; /* Could be more or less, depending on screen size */
+    border-radius: 5px 5px 5px 5px ;
+    box-shadow: 0px 2px 5px #b7b7b7;
+  }
+  
+  /*---------------------------- The Close Button --------------------------------------------*/
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    left: 15px;
+    bottom: 25px;
+    position: relative;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  } 
+/*------------------------------- Modal content -------------------------------------------*/
+/*------------------------------- Modal HEAD-------------------------------------------*/
+#suscride-title-1
+{
+ 
+    font-size: 200%;
+    margin-bottom: 0%;
+    margin-top: 0%;
+}
+#suscride-title-2
+{
+    margin-top: 0%;
+    margin-bottom: 1%;
+    font-size: 150%;
+    font-weight: 400;
+    color: #717a8a;
+}
+#line3
+{
+  border-bottom: 2px solid #eaebee;
+  margin: unset;
+  width: 100%;
+  padding-right: 20px;
+  padding-left: 20px;
+  position: relative;
+  right: 20px;
+  
+}
+/*------------------------------- Modal BODY -------------------------------------------*/
+.modal-body{
+  align-items: stretch;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 10px;
+}
+.form-field
+{
+  margin-bottom: 10px;
+  font-size: 90%;
+  overflow: unset;
+  height: 38px;
+  border-radius: 5px 5px 5px 5px;
+  border: 1.5px solid #abd6e8;
+  padding-left: 10px;
+  background-color: #f5f6f7;
+}
+#firstname-field
+{
+  width: 49%;
+}
+#lastname-field
+{
+  width: 49%;
+  margin-left: auto;
+}
+.birthday
+{
+  width: 30%;
+  height: 30px;
+  background-color: white;
+  border: 1px solid #acd7e9;
+  border-radius: 3px 3px 3px 3px;
+  padding-left: 10px;
+}
+#birthday-box
+{
+  display: flex;
+  flex-wrap: nowrap;
+}
+#birthday-month
+{
+  height: 35px;
+
+}
+#little-text-3
+{
+  color: #4d6770;
+  font-size: small;
+}
+.gender
+{
+  font-size: medium;
+  width: 70px;
+  height: 28px;
+  border: 1px solid  #d8dbdf;
+  border-radius: 5px 5px 5px 5px;
+  text-align: left;
+  padding-left: 10px;
+  padding-top: 6px;
+  display: flex;
+  margin-top: 0%;
+
+}
+#gender-box
+{
+  display: flex;
+  flex-wrap: nowrap;
+  height: 25px;
+}
+#little-text-4
+{
+  font-size: small;
+  color: #4d6770;
+  padding-top: 0%;
+  margin-top: 0%;
+}
+#suscribe-button
+{
+  margin-left: auto;
+  width: 170px;
+  height: 35px;
+  border: unset;
+  border-radius: 5px 5px 5px 5px;
+  background-color: #00a400;
+  font-weight: 800;
+  font-size: 15px;
+  color: white;
+  display: inline;
+  transition: 0.3s;
+} 
+#suscribe-button:hover
+{
+  background-color: #2ab82a;
+  width: 180px;
+  height: 40px;
+  cursor: pointer;
+  
+}
+#error
+{
+  color: #00a400;
+  margin: unset;
+  
+}
+/*------------------------------- Media QUERY -------------------------------------------*/
+
+@media screen and (max-width: 1100px) {
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 75%; /* Could be more or less, depending on screen size */
+    justify-content: center;
+  }
+  #firstname-field
+  {
+    width: 100%;
+  }
+  #lastname-field
+  {
+    width: 100%;
+    margin-left: auto;
+  }
+  #suscribe-button
+  {
+    margin-left: auto;
+    width: 170px;
+    height: 35px;
+    border: unset;
+    border-radius: 5px 5px 5px 5px;
+    background-color: #00a400;
+    font-weight: 800;
+    font-size: 15px;
+    color: white;
+    display: inline;
+    transition: 0.3s;
+  } 
+
+}
