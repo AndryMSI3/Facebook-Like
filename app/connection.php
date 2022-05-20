@@ -18,7 +18,7 @@ namespace PostgreSQLTutorial;
         // read parameters in the ini configuration file
 		$db = parse_url(getenv("DATABASE_URL"));
 
-		$pdo = new PDO("pgsql:" . sprintf(
+		$pdo = new \PDO("pgsql:" . sprintf(
 			"host=%s;port=%s;user=%s;password=%s;dbname=%s",
 			$db["host"],
 			$db["port"],
