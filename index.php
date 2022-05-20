@@ -145,10 +145,10 @@
                             </div>
                             <p id="little-text-3" style="margin:unset">Gender</p>
                             <div id="gender-box">
-                                <p class="gender"> Woman
+                                <p class="gender"> Female
                                     <input class="cercle_radio" type="radio" name="gender" value="female">
                                 </p>
-                                <p class="gender" style="margin-left: 10px;"> Man
+                                <p class="gender" style="margin-left: 10px;"> Male
                                     <input class="cercle_radio"  type="radio" name="gender" value="male">
                                 </p>
                             </div>
