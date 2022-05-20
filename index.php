@@ -28,19 +28,19 @@
                     <div style="text-align:center;">
                 <input type="submit" id="login-button" value="Login"></div>
                 </form>
-                <p id="error2" style="color:red" name="error2" value="<?php echo $_GET['error2'];?>">
-                    <?php  
+                <!--p id="error2" style="color:red" name="error2" value="<!?php echo $_GET['error2'];?>">
+                    <!?php  
                         if(isset($_GET['error2']))
                         {
                             echo $_GET['error2'];
                         }    
                     ?>
                 </p>
-                <!--p id="error2" value="<!?php echo $_GET['message'];?>">
+                <!p id="error2" value="<!?php echo $_GET['message'];?>">
                     <!?php  
                         if(isset($_GET['message'])) { echo $_GET['message']; }    
-                    ?-->
-                </p>
+                    ?>
+                </p-->
                 <p id="forgot-pswd">Forgot your password ?</p>
                 <p id="line"></p>
                 <button id="account-creation-button" >Create new account</button>
