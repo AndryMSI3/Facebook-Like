@@ -28,7 +28,7 @@
                     <div style="text-align:center;">
                 <input type="submit" id="login-button" value="Login"></div>
                 </form>
-                <!--p id="error2" style="color:red" name="error2" value="<!?php echo $_GET['error2'];?>">
+                <p id="error2" style="color:red" name="error2" value="<!?php echo $_GET['error2'];?>">
                     <!?php  
                         if(isset($_GET['error2']))
                         {
@@ -124,7 +124,7 @@
                                 <p id="little-text-3" style="margin:unset">Birthdate</p>
                             <div id="birthday-box">
                                 <input class="birthday" id="birthday-day"  name="day"style="height:33px;" type="number" 
-                                    min="1" max="31" onchange="change_ddn()">
+                                    min="1" max="31" onchange="change_birthday()">
                                 <select class="birthday" name= "month" id="birthday-month" style="height:33px;margin-left: 3%;" 
                                 onchange="change_birthday()">
                                     <option value="janvier">january</option>
@@ -141,7 +141,7 @@
                                     <option value="decembre">december</option>
                                 </select>
                                 <input id="birthday-year" name ="year" style="height:33px;margin-left: 3%;" class="birthday" 
-                                type="number" min="1900" max="2004" onchange="change-birthday()">
+                                type="number" min="1900" max="2004" onchange="change_birthday()">
                             </div>
                             <p id="little-text-3" style="margin:unset">Gender</p>
                             <div id="gender-box">
@@ -153,11 +153,11 @@
                                 </p>
                             </div>
                         </div>
-                        <!--?php if(isset($_GET['error'])){ ?>
+                        <?php if(isset($_GET['error'])){ ?>
                         <!p id="error" name="error" value="<--?php echo $_GET['error'];?>" onchange="display_block();">
                             <--?php echo $_GET['error'];?>
-                        </p-->
-                        <!--?php  ?-->   
+                        </p>
+                        <?php } ?>   
                         <p id="little-text-4">By pressing Register, you agree to our <a href="">Terms & Conditions</a>,
                         our <br><a href="">Data Use Policy</a> and our <a href="">Use Policy
                         </a> cookies. You may receive text message notifications from us and you
