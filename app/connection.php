@@ -2,6 +2,7 @@
 namespace PostgreSQLTutorial;
 /**
 * Represent the Connection
+* Yes
 */
     class Connection {
         /**
