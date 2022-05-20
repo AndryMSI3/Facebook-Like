@@ -36,10 +36,10 @@
                         }    
                     ?>
                 </p>
-                <p id="error2" value="<?php echo $_GET['message'];?>">
-                    <?php  
+                <!--p id="error2" value="<!?php echo $_GET['message'];?>">
+                    <!?php  
                         if(isset($_GET['message'])) { echo $_GET['message']; }    
-                    ?>
+                    ?-->
                 </p>
                 <p id="forgot-pswd">Forgot your password ?</p>
                 <p id="line"></p>
@@ -54,7 +54,7 @@
 
         <div id="annex-side">
                 <div id="language-side">
-                    <p>Français (France)</p> 
+                    <p>Frantsay (France)</p> 
                     <p>Malagasy </p>
                     <p>English (US)</p>
                     <p>Italiano</p>
@@ -153,11 +153,11 @@
                                 </p>
                             </div>
                         </div>
-                        <?php if(isset($_GET['error'])){ ?>
-                        <p id="error" name="error" value="<?php echo $_GET['error'];?>" onchange="display_block();">
-                            <?php echo $_GET['error'];?>
-                        </p>
-                        <?php } ?>   
+                        <!--?php if(isset($_GET['error'])){ ?>
+                        <!p id="error" name="error" value="<--?php echo $_GET['error'];?>" onchange="display_block();">
+                            <--?php echo $_GET['error'];?>
+                        </p-->
+                        <!--?php  ?-->   
                         <p id="little-text-4">By pressing Register, you agree to our <a href="">Terms & Conditions</a>,
                         our <br><a href="">Data Use Policy</a> and our <a href="">Use Policy
                         </a> cookies. You may receive text message notifications from us and you
