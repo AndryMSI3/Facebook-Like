@@ -127,18 +127,18 @@
                                     min="1" max="31" onchange="change_birthday()">
                                 <select class="birthday" name= "month" id="birthday-month" style="height:33px;margin-left: 3%;" 
                                 onchange="change_birthday()">
-                                    <option value="janvier">january</option>
-                                    <option value="fevrier">february</option>
-                                    <option value="mars">march</option>
-                                    <option value="avril">april</option>
-                                    <option value="mai">may</option>
-                                    <option value="juin">june</option>
-                                    <option value="juillet">july</option>
-                                    <option value="août">august</option>
-                                    <option value="septembre">september</option>
-                                    <option value="octobre">october</option>
-                                    <option value="novembre">november</option>
-                                    <option value="decembre">december</option>
+                                    <option value="january">january</option>
+                                    <option value="february">february</option>
+                                    <option value="march">march</option>
+                                    <option value="april">april</option>
+                                    <option value="may">may</option>
+                                    <option value="june">june</option>
+                                    <option value="july">july</option>
+                                    <option value="august">august</option>
+                                    <option value="september">september</option>
+                                    <option value="october">october</option>
+                                    <option value="november">november</option>
+                                    <option value="december">december</option>
                                 </select>
                                 <input id="birthday-year" name ="year" style="height:33px;margin-left: 3%;" class="birthday" 
                                 type="number" min="1900" max="2004" onchange="change_birthday()">
@@ -155,7 +155,7 @@
                         </div>
                         <?php if(isset($_GET['error'])){ ?>
                         <p id="error" name="error" value="<?php echo $_GET['error'];?>" onchange="display_block();">
-                            <--?php echo $_GET['error'];?>
+                            <?php echo $_GET['error'];?>
                         </p>
                         <?php } ?>   
                         <p id="little-text-4">By pressing Register, you agree to our <a href="">Terms & Conditions</a>,
