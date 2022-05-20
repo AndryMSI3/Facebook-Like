@@ -175,6 +175,7 @@
 <?php
     require 'vendor/autoload.php';
     use PostgreSQLTutorial\Connection as Connection;
+    class SpecificException extends Exception{}
     try 
     {
         Connection::get()->connect();
