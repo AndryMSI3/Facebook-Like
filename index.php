@@ -117,7 +117,7 @@
                     <form action="app/Suscribe.php" method="post" >
                                 <input class="form-field" id ="firstname-field" name="firstname" type="text" placeholder="Firstname">
                                 <input class="form-field" id ="lastname-field" name ="lastname" type="text" placeholder="Lastname">
-                                <input class="form-field" name="identifiant" type="text" placeholder="Phone number or e-mail" style="width: 100%;">
+                                <input class="form-field" name="identifiant" type="text" placeholder="E-mail" style="width: 100%;">
                                 <input class="form-field" name ="password1" type="password" placeholder="Password" style="width: 100%;">
                                 <input class="form-field" name ="password2" type="password" placeholder="Confirm password" 
                                 style="width: 100%;">

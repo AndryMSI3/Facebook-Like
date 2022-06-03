@@ -92,12 +92,12 @@
         }
         else
         {
-            $re = '/^\+?(0|261)?(33|34|32)[0-9]{7}$/m';
-            if((preg_match_all($re, $_POST['identifiant'], $matches, PREG_SET_ORDER, 0)))
-            {
-                $stmt->bindValue(':identifiant',$_POST['identifiant']);
-            }
-            else if(filter_var($_POST['identifiant'], FILTER_VALIDATE_EMAIL))
+            // $re = '/^\+?(0|261)?(33|34|32)[0-9]{7}$/m';
+            // if((preg_match_all($re, $_POST['identifiant'], $matches, PREG_SET_ORDER, 0)))
+            // {
+            //     $stmt->bindValue(':identifiant',$_POST['identifiant']);
+            // }
+            if(filter_var($_POST['identifiant'], FILTER_VALIDATE_EMAIL))
             {
                 $stmt->bindValue(':identifiant',$_POST['identifiant']);
             }
