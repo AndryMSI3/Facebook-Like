@@ -152,7 +152,6 @@
         // execute the insert statement
         $stmt->execute();
         echo "Account created successfully";
-        $showrow->ShowRow();
     } 
     catch (\PDOException $e) 
     {
