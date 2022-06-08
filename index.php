@@ -23,7 +23,7 @@
                 <br>
                 <form action="/app/Connect-home.php" method="post">
                     <input name='identifiant'class="login-field" type="text" 
-                    placeholder="Email or phone number">
+                    placeholder="Email">
                     <input name='password' class="login-field" type="password" placeholder="Password">
                     <div style="text-align:center;">
                 <input type="submit" id="login-button" value="Login"></div>

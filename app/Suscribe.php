@@ -1,21 +1,22 @@
 <?php
+    session_start();
+    require 'google-api-php-client/vendor/autoload.php';
     require '../vendor/autoload.php';
+    require 'quickstart.php';
     use PostgreSQLTutorial\Connection as Connection;
-    use PostgreSQLTutorial\PostgreSQLShowRow as PostgreSQLShowRow;
     try 
     {
         $pdo = Connection::get()->connect();
-        $showrow = new PostgreSQLShowRow($pdo);
         $sql_last_id = "SELECT id FROM users WHERE id=(SELECT max(id) FROM users)";
-        $sql = 'INSERT INTO users(id,identifiant,_password,gender,birthdate,firstname,lastname) 
-        VALUES(:id,:identifiant,:_password,:gender,:birthdate,:firstname,:lastname)';
+        $sql = 'INSERT INTO users(id,identifiant,_password,gender,birthdate,firstname,lastname,confirmKey) 
+        VALUES(:id,:identifiant,:_password,:gender,:birthdate,:firstname,:lastname,:confirmKey)';
         $stmt = $pdo->prepare($sql);
         $stmt_max_id = $pdo->prepare($sql_last_id);
         $stmt_max_id->execute();
         $id = $stmt_max_id->fetch();
         $id[0]++;
         $month_in_number;
-        switch ($_POST['month'])
+        switch (test_input($_POST['month']))
         {
             case "january":
                 $month_in_number = 1;
@@ -35,7 +36,7 @@
             case "june":
                 $month_in_number = 6;
                 break;
-            case "juily":
+            case "july":
                 $month_in_number = 7;
                 break;
             case "august":
@@ -54,41 +55,46 @@
                 $month_in_number = 12;
                 break;
         }
-        if (empty($_POST["lastname"])) 
+        if (empty(test_input($_POST["lastname"]))) 
         {
-            header("Location:../index.php?error=*Name is required");
+            $_SESSION['error'] = '*Name is required';
+            header("Location:../index.php");
         } 
         else 
         {
             // check if name only contains letters and whitespace
-            if (!preg_match("/^[a-zA-Z ]*$/",$_POST["lastname"])) 
+            if (!preg_match("/^[a-zA-Z ]*$/",test_input($_POST["lastname"]))) 
             {
-                header("Location:../index.php?error=*Only empty letters and spaces are allowed");
+                $_SESSION['error'] = '*Only empty letters and spaces are allowed';
+                header("Location:../index.php");
             }
             else
             {
-                $lastname = $_POST["lastname"];
+                $lastname =  test_input($_POST["lastname"]);
             }
           }
-        if (empty($_POST["firstname"])) 
+        if (empty(test_input($_POST["firstname"]))) 
         {
-            header("Location:../index.php?error=*Firstname is required");
+            $_SESSION['error'] = '*Firstname is required';
+            header("Location:../index.php");
         } 
         else 
         {
         // check if name only contains letters and whitespace
-            if (!preg_match("/^[a-zA-Z ]*$/",$_POST["firstname"])) 
+            if (!preg_match("/^[a-zA-Z ]*$/",test_input($_POST["firstname"])))
             {
-                header("Location:../index.php?error=*Only empty letters and spaces are allowed");
+                $_SESSION['error'] = '*Only empty letters and spaces are allowed';
+                header("Location:../index.php");
             }
             else
             {
-                $firstname = $_POST["firstname"];
+                $firstname =  test_input($_POST["firstname"]);
             }
         }
-        if(empty($_POST['identifiant']))
+        if(empty(test_input($_POST['identifiant'])))
         {
-            header("Location:../index.php?error=*And identifiant is required");
+            $_SESSION['error'] = '*And identifiant is required';
+            header("Location:../index.php");
         }
         else
         {
@@ -97,59 +103,85 @@
             // {
             //     $stmt->bindValue(':identifiant',$_POST['identifiant']);
             // }
-            if(filter_var($_POST['identifiant'], FILTER_VALIDATE_EMAIL))
+            if(filter_var(test_input($_POST['identifiant']), FILTER_VALIDATE_EMAIL))
             {
                 $stmt->bindValue(':identifiant',$_POST['identifiant']);
             }
             else
             {
-                header("Location:../index.php?error=*Please enter a valid ID");
+                $_SESSION['error'] = '*Please enter a valid ID';
+                header("Location:../index.php");
             }
         }
-        if (empty($_POST["gender"])) 
+        if (empty(test_input($_POST["gender"])))
         {
-            header("Location:../index.php?error=*Gender is required");
+            $_SESSION['error'] = '*Gender is required';
+            header("Location:../index.php");
         } 
         else 
         {
             $gender;
-            if($_POST["gender"] == "female")
+            if(test_input($_POST["gender"]) == "female")
             {
                 $gender = 0;
             }
-            else if($_POST["gender"] == "male")
+            else if(test_input($_POST["gender"]) == "male")
             {
                 $gender = 1;
             }
         }
-        if(empty($_POST["password1"]) || empty($_POST["password1"]))
+        if(empty( test_input($_POST["password1"])) || empty(test_input($_POST["password1"])))
         {
-            header("Location:../index.php?error=*Password is required");
+            $_SESSION['error'] = '*Password is required';
+            header("Location:../index.php");
         }
         else
         {
-            if(empty($_POST["password1"]) !== empty($_POST["password1"]))
+            if(empty(test_input($_POST["password1"])) !== empty( test_input($_POST["password1"])))
             {
-                header("Location:../index.php?error=*Passwords are not the same");
+                $_SESSION['error'] = '*Passwords are not the same';
+                header("Location:../index.php");
             }
             else
             {
-                $_password = $_POST["password1"];
+                $_password =  test_input($_POST["password1"]);
             }
         }
-        $correct_date = $_POST['year']."-".$month_in_number."-".$_POST['day'];
-        if(empty($month_in_number) ||empty( $_POST['year']) || empty($_POST['day']))
+        $correct_date =  test_input($_POST['year'])."-".$month_in_number."-". test_input($_POST['day']);
+        if(empty( test_input($month_in_number)) ||empty( test_input( $_POST['year'])) || empty(test_input($_POST['day'])))
         {
-            header("Location:../index.php?error=*Indicate a correct birthdate");
+            $_SESSION['error '] = '*Indicate a correct birthdate';
+            header("Location:../index.php");
         }
         // pass values to the statement
+        $confirmKey = random_str();
         $stmt->bindValue(':id',$id[0]);
         $stmt->bindValue(':gender',$gender);
         $stmt->bindValue(':_password',$_password);
         $stmt->bindValue(':birthdate',$correct_date);
         $stmt->bindValue(':firstname',$firstname);
         $stmt->bindValue(':lastname', $lastname);
-        // execute the insert statement
+        $stmt->bindValue(':confirmKey', $confirmKey);
+        // execute the insert           
+        // Get the API client and construct the service object.
+        $client = getClient();
+        $service = new Google_Service_Gmail($client);        
+        $message_content ="
+        <html>
+            <body>
+                <div align=3D\"center\">
+                    <a href=3D\"http://localhost:8000/app/confirmation.php?id=3D".$id[0] ."&key=3D".$confirmKey."\"> 
+                        Please confirm your account
+                    </a>  
+                </div>
+            </body>
+        </html>
+        ";
+        echo $message_content."<br>";
+        echo $id[0]."<br>";
+        $message =  createMessage("facebooklike383@gmail.com",test_input($_POST['identifiant']),
+         "test envoie de lien avec Gmail API",$message_content);
+        sendMessage($service,"me", $message);
         $stmt->execute();
         echo "Account created successfully";
     } 
@@ -157,11 +189,33 @@
     {
         if($e->getCode() == 23505)
         {
-            header("Location:../index.php?error=*you have already registered");
+            $_SESSION['error'] = '*you have already registered';
+            header("Location:../index.php");
         }
         else
         {
             echo $e->getMessage();
         }
+    }
+    function test_input($data) 
+    {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+    function random_str(
+        int $length = 24,
+        string $keyspace = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    ): string {
+        if ($length < 1) {
+            throw new \RangeException("Length must be a positive integer");
+        }
+        $pieces = [];
+        $max = mb_strlen($keyspace, '8bit') - 1;
+        for ($i = 0; $i < $length; ++$i) {
+            $pieces []= $keyspace[random_int(0, $max)];
+        }
+        return implode('', $pieces);
     }
 ?>
