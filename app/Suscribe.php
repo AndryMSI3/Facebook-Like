@@ -14,7 +14,6 @@
         $stmt_max_id = $pdo->prepare($sql_last_id);
         $stmt_max_id->execute();
         $id = $stmt_max_id->fetch();
-        $id[0]++;
         $month_in_number;
         switch (test_input($_POST['month']))
         {
@@ -103,16 +102,28 @@
             // {
             //     $stmt->bindValue(':identifiant',$_POST['identifiant']);
             // }
-            if(filter_var(test_input($_POST['identifiant']), FILTER_VALIDATE_EMAIL))
+            $identifiant = test_input($_POST['identifiant']);
+            if(filter_var($identifiant, FILTER_VALIDATE_EMAIL))
             {
-                $stmt->bindValue(':identifiant',$_POST['identifiant']);
+                $sql_search_duplicate_mail = "SELECT * FROM users WHERE identifiant = '%$identifiant%'";
+                $stmt2 = $pdo->prepare($sql_search_duplicate_mail);
+                $stmt2->execute();
+                $mailexist = $stmt2->rowCount();
+                if($mailexist == 1)
+                {
+                    $_SESSION['error'] = '*This email was already used';
+                    header("Location:../index.php");
+                }
+                else
+                {
+                    $stmt->bindValue(':identifiant',test_input($_POST['identifiant']));
+                }
             }
             else
             {
-                $_SESSION['error'] = '*Please enter a valid ID';
+                $_SESSION['error'] = '*Please enter a valid identifiant';
                 header("Location:../index.php");
             }
-        }
         if (empty(test_input($_POST["gender"])))
         {
             $_SESSION['error'] = '*Gender is required';
@@ -155,7 +166,7 @@
         }
         // pass values to the statement
         $confirmKey = random_str();
-        $stmt->bindValue(':id',$id[0]);
+        $stmt->bindValue(':id',$id);
         $stmt->bindValue(':gender',$gender);
         $stmt->bindValue(':_password',$_password);
         $stmt->bindValue(':birthdate',$correct_date);
@@ -170,7 +181,8 @@
         <html>
             <body>
                 <div align=3D\"center\">
-                    <a href=3D\"http://localhost:8000/app/confirmation.php?id=3D".$id[0] ."&key=3D".$confirmKey."\"> 
+                    <a href=3D\"https://limitless-temple-83849.herokuapp.com/confirmation.php?id=3D".
+                    $id."&key=3D".$confirmKey."\"> 
                         Please confirm your account
                     </a>  
                 </div>
@@ -178,24 +190,17 @@
         </html>
         ";
         echo $message_content."<br>";
-        echo $id[0]."<br>";
+        echo $id."<br>";
         $message =  createMessage("facebooklike383@gmail.com",test_input($_POST['identifiant']),
          "test envoie de lien avec Gmail API",$message_content);
         sendMessage($service,"me", $message);
         $stmt->execute();
         echo "Account created successfully";
+        }
     } 
-    catch (\PDOException $e) 
+    catch(Exception $e)
     {
-        if($e->getCode() == 23505)
-        {
-            $_SESSION['error'] = '*you have already registered';
-            header("Location:../index.php");
-        }
-        else
-        {
-            echo $e->getMessage();
-        }
+        echo $e->getMessage();
     }
     function test_input($data) 
     {
