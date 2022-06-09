@@ -7,13 +7,9 @@
     try 
     {
         $pdo = Connection::get()->connect();
-        $sql_last_id = "SELECT id FROM users WHERE id=(SELECT max(id) FROM users)";
         $sql = 'INSERT INTO users(identifiant,_password,gender,birthdate,firstname,lastname,confirmKey) 
         VALUES(:identifiant,:_password,:gender,:birthdate,:firstname,:lastname,:confirmKey)';
         $stmt = $pdo->prepare($sql);
-        $stmt_max_id = $pdo->prepare($sql_last_id);
-        $stmt_max_id->execute();     
-        $id = $stmt_max_id->fetch();
         $month_in_number;
         switch (test_input($_POST['month']))
         {
@@ -172,6 +168,11 @@
         $stmt->bindValue(':firstname',$firstname);
         $stmt->bindValue(':lastname', $lastname);
         $stmt->bindValue(':confirmKey', $confirmKey);
+        $stmt->execute();
+        $sql_last_id = "SELECT id FROM users WHERE id=(SELECT max(id) FROM users)";
+        $stmt_max_id = $pdo->prepare($sql_last_id);
+        $stmt_max_id->execute();     
+        $id = $stmt_max_id->fetch();
         // execute the insert           
         // Get the API client and construct the service object.
         $client = getClient();
@@ -194,7 +195,6 @@
         $message =  createMessage("facebooklike383@gmail.com",test_input($_POST['identifiant']),
          "test envoie de lien avec Gmail API",$message_content);
         sendMessage($service,"me", $message);
-        $stmt->execute();
         echo "Account created successfully";
         }
     } 
