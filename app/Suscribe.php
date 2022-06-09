@@ -12,8 +12,16 @@
         VALUES(:id,:identifiant,:_password,:gender,:birthdate,:firstname,:lastname,:confirmKey)';
         $stmt = $pdo->prepare($sql);
         $stmt_max_id = $pdo->prepare($sql_last_id);
-        $stmt_max_id->execute();
-        $id = $stmt_max_id->fetch();
+        $stmt_max_id->execute();     
+        if($stmt_max_id->fetch())
+        {
+            $id = $stmt_max_id->fetch();
+            $id++;
+        }
+        else
+        {
+            $id = 1;
+        }
         $month_in_number;
         switch (test_input($_POST['month']))
         {
