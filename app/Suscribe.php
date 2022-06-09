@@ -172,7 +172,7 @@
         $sql_last_id = "SELECT id FROM users WHERE id=(SELECT max(id) FROM users)";
         $stmt_max_id = $pdo->prepare($sql_last_id);
         $stmt_max_id->execute();     
-        $id[0] = $stmt_max_id->fetch();
+        $id = $stmt_max_id->fetch();
         // execute the insert           
         // Get the API client and construct the service object.
         $client = getClient();
@@ -182,7 +182,7 @@
             <body>
                 <div align=3D\"center\">
                     <a href=3D\"https://limitless-temple-83849.herokuapp.com/app/confirmation.php?id=3D".
-                    $id[0]."&key=3D".$confirmKey."\"> 
+                    $id[0][0]."&key=3D".$confirmKey."\"> 
                         Please confirm your account
                     </a>  
                 </div>
@@ -190,10 +190,6 @@
         </html>
         ";
         echo $message_content."<br>";
-        var_dump($id);
-        echo "simple:".$id;
-        echo " Niveau 1:".$id[0];
-        echo " Niveau 2:".$id[0][0]; 
         $message =  createMessage("facebooklike383@gmail.com",test_input($_POST['identifiant']),
          "test envoie de lien avec Gmail API",$message_content);
         sendMessage($service,"me", $message);
