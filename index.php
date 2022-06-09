@@ -30,17 +30,12 @@
                     <div style="text-align:center;">
                 <input type="submit" id="login-button" value="Login"></div>
                 </form>
-                <p id="error2" style="color:red" name="error2" value="<?php echo $_GET['error2'];?>">
+                <p id="error2" style="color:red" name="error2" value="<?php echo $_SESSION['error2'];?>">
                     <?php  
-                        if(isset($_GET['error2']))
+                        if(isset($_SESSION['error2']))
                         {
-                            echo $_GET['error2'];
+                            echo $_SESSION['error2'];
                         }    
-                    ?>
-                </p>
-                <p id="error2" value="<!?php echo $_GET['message'];?>">
-                    <?php  
-                        if(isset($_GET['message'])) { echo $_GET['message']; }    
                     ?>
                 </p>
                 <p id="forgot-pswd">Forgot your password ?</p>
