@@ -190,8 +190,7 @@
         </html>
         ";
         echo $message_content."<br>";
-        echo"Voiçi l'id:".$id."Fin id <br>";
-        echo"Voiçi l'id:".var_dump($id)."Fin id <br>";
+        echo"Voiçi l'id:".$id[0]."Fin id <br>";
         $message =  createMessage("facebooklike383@gmail.com",test_input($_POST['identifiant']),
          "test envoie de lien avec Gmail API",$message_content);
         sendMessage($service,"me", $message);
