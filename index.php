@@ -8,7 +8,7 @@
         $conn = Connection::get()->connect();
         $sql = 'CREATE TABLE IF NOT EXISTS users
         (
-            id integer NOT NULL AUTO_INCREMENT,
+            id SERIAL NOT NULL,
             identifiant character varying(255) ,
             _password character varying(255),
             gender bit(1),
