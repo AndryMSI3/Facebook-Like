@@ -7,7 +7,7 @@
     try 
     {
         $pdo = Connection::get()->connect();
-        // $sql_last_id = "SELECT id FROM users WHERE id=(SELECT max(id) FROM users)";
+        $sql_last_id = "SELECT id FROM users WHERE id=(SELECT max(id) FROM users)";
         $sql = 'INSERT INTO users(identifiant,_password,gender,birthdate,firstname,lastname,confirmKey) 
         VALUES(:identifiant,:_password,:gender,:birthdate,:firstname,:lastname,:confirmKey)';
         $stmt = $pdo->prepare($sql);
