@@ -105,7 +105,7 @@
                 $stmt2 = $pdo->prepare($sql_search_duplicate_mail);
                 $stmt2->execute();
                 $mailexist = $stmt2->rowCount();
-                if($mailexist == 1)
+                if($mailexist >= 1)
                 {
                     $_SESSION['error'] = '*This email was already used';
                     header("Location:../index.php");
