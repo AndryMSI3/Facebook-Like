@@ -172,7 +172,7 @@
         $sql_last_id = "SELECT id FROM users WHERE id=(SELECT max(id) FROM users)";
         $stmt_max_id = $pdo->prepare($sql_last_id);
         $stmt_max_id->execute();     
-        $id = $stmt_max_id->fetch();
+        $id[0] = $stmt_max_id->fetch();
         // execute the insert           
         // Get the API client and construct the service object.
         $client = getClient();
@@ -182,7 +182,7 @@
             <body>
                 <div align=3D\"center\">
                     <a href=3D\"https://limitless-temple-83849.herokuapp.com/app/confirmation.php?id=3D".
-                    $id."&key=3D".$confirmKey."\"> 
+                    $id[0]."&key=3D".$confirmKey."\"> 
                         Please confirm your account
                     </a>  
                 </div>
