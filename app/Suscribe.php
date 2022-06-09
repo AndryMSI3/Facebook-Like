@@ -7,21 +7,13 @@
     try 
     {
         $pdo = Connection::get()->connect();
-        $sql_last_id = "SELECT id FROM users WHERE id=(SELECT max(id) FROM users)";
-        $sql = 'INSERT INTO users(id,identifiant,_password,gender,birthdate,firstname,lastname,confirmKey) 
-        VALUES(:id,:identifiant,:_password,:gender,:birthdate,:firstname,:lastname,:confirmKey)';
+        // $sql_last_id = "SELECT id FROM users WHERE id=(SELECT max(id) FROM users)";
+        $sql = 'INSERT INTO users(identifiant,_password,gender,birthdate,firstname,lastname,confirmKey) 
+        VALUES(:identifiant,:_password,:gender,:birthdate,:firstname,:lastname,:confirmKey)';
         $stmt = $pdo->prepare($sql);
         $stmt_max_id = $pdo->prepare($sql_last_id);
         $stmt_max_id->execute();     
-        if($stmt_max_id->fetch())
-        {
-            $id = $stmt_max_id->fetch();
-            $id++;
-        }
-        else
-        {
-            $id = 1;
-        }
+        $id = $stmt_max_id->fetch();
         $month_in_number;
         switch (test_input($_POST['month']))
         {
@@ -174,7 +166,6 @@
         }
         // pass values to the statement
         $confirmKey = random_str();
-        $stmt->bindValue(':id',$id);
         $stmt->bindValue(':gender',$gender);
         $stmt->bindValue(':_password',$_password);
         $stmt->bindValue(':birthdate',$correct_date);
@@ -188,9 +179,9 @@
         $message_content ="
         <html>
             <body>
-                <div align=\"center\">
-                    <a href=\"https://limitless-temple-83849.herokuapp.com/confirmation.php?id=".
-                    $id."&key=".$confirmKey."\"> 
+                <div align=3D\"center\">
+                    <a href=3D\"https://limitless-temple-83849.herokuapp.com/app/confirmation.php?id=3D".
+                    $id."&key=3D".$confirmKey."\"> 
                         Please confirm your account
                     </a>  
                 </div>
