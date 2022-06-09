@@ -173,18 +173,17 @@
         $stmt_max_id = $pdo->prepare($sql_last_id);
         $stmt_max_id->execute();     
         $id = $stmt_max_id->fetch();
-        echo $id[0];
-        var_dump($id[0]);
         // execute the insert           
         // Get the API client and construct the service object.
         $client = getClient();
-        $service = new Google_Service_Gmail($client);        
+        $service = new Google_Service_Gmail($client);  
+        echo $id[0];      
         $message_content ="
         <html>
             <body>
                 <div align=3D\"center\">
                     <a href=3D\"https://limitless-temple-83849.herokuapp.com/app/confirmation.php?id=3D".
-                    $id[0][0]."&key=3D".$confirmKey."\"> 
+                    $id[0]."&key=3D".$confirmKey."\"> 
                         Please confirm your account
                     </a>  
                 </div>
