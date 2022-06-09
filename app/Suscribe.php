@@ -173,6 +173,7 @@
         $stmt_max_id = $pdo->prepare($sql_last_id);
         $stmt_max_id->execute();     
         $id = $stmt_max_id->fetch();
+        var_dump($id);
         // execute the insert           
         // Get the API client and construct the service object.
         $client = getClient();
