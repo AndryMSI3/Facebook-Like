@@ -180,9 +180,9 @@
         $message_content ="
         <html>
             <body>
-                <div align=3D\"center\">
-                    <a href=3D\"https://limitless-temple-83849.herokuapp.com/confirmation.php?id=3D".
-                    $id."&key=3D".$confirmKey."\"> 
+                <div align=\"center\">
+                    <a href=\"https://limitless-temple-83849.herokuapp.com/confirmation.php?id=".
+                    $id."&key=".$confirmKey."\"> 
                         Please confirm your account
                     </a>  
                 </div>
