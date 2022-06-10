@@ -104,7 +104,7 @@
             {
                 echo "<br> test d'identifiant niveau 1: ".$identifiant."<br>";
                 $sql = "SELECT count(*) FROM users WHERE identifiant = ?"; 
-                $result = $con->prepare($sql); 
+                $result = $pdo->prepare($sql); 
                 $result->execute([$identifiant]); 
                 $mailexist = $result->fetchColumn(); 
                 if($mailexist)
