@@ -6,5 +6,5 @@ Homepage:<br>
 Connexion modal:<br>
 <img src="https://github.com/AndryMSI3/Facebook-like/blob/main/screenshot/Login.png" align=center>
 
-The website is hosted on heroku:<br>
+The website is hosted on heroku on a PostgreSQL database:<br>
 <img src="https://github.com/AndryMSI3/Facebook-like/blob/main/screenshot/Heroku.png" align=center>
