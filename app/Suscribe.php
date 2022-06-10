@@ -99,19 +99,31 @@
             //     $stmt->bindValue(':identifiant',$_POST['identifiant']);
             // }
             $identifiant = test_input($_POST['identifiant']);
+            echo "<br> test d'identifiant niveau 1: ".$identifiant."<br>";
             if(filter_var($identifiant, FILTER_VALIDATE_EMAIL))
             {
+                echo "<br> test d'identifiant niveau 1: ".$identifiant."<br>";
                 $sql_search_duplicate_mail = "SELECT * FROM users WHERE identifiant = '%$identifiant%'";
                 $stmt2 = $pdo->prepare($sql_search_duplicate_mail);
                 $stmt2->execute();
                 $mailexist = $stmt2->rowCount();
+                if($mailexist)
+                {
+                    echo "<br>Le mail existe<br>";
+                }
+                else
+                {
+                    echo "<br>Le mail n'existe pas<br>";
+                }
                 if($mailexist >= 1)
                 {
                     $_SESSION['error'] = '*This email was already used';
+                    echo "<br>On entre dans la condition IF<br>";
                     header("Location:../index.php");
                 }
                 else
                 {
+                    echo "<br>On entre dans la condition ELSE<br>";
                     $stmt->bindValue(':identifiant',test_input($_POST['identifiant']));
                 }
             }
