@@ -12,5 +12,5 @@ The website is hosted on heroku on a PostgreSQL database:<br>
 Input error handling:<br>
 <img src="https://github.com/AndryMSI3/Facebook-like/blob/main/screenshot/Error%20handling.png" align=center>
 
-Confirmation using GMAIL API:<br>
+Confirmation by sending mail using GMAIL API:<br>
 <img src="https://github.com/AndryMSI3/Facebook-like/blob/main/screenshot/Gmail.png" align=center>
