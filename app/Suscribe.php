@@ -103,10 +103,10 @@
             if(filter_var($identifiant, FILTER_VALIDATE_EMAIL))
             {
                 echo "<br> test d'identifiant niveau 1: ".$identifiant."<br>";
-                $sql_search_duplicate_mail = "SELECT * FROM users WHERE identifiant = '%$identifiant%'";
-                $stmt2 = $pdo->prepare($sql_search_duplicate_mail);
-                $stmt2->execute();
-                $mailexist = $stmt2->rowCount();
+                $sql = "SELECT count(*) FROM users WHERE identifiant = ?"; 
+                $result = $con->prepare($sql); 
+                $result->execute([$identifiant]); 
+                $mailexist = $result->fetchColumn(); 
                 if($mailexist)
                 {
                     echo "<br>Le mail existe<br>";
