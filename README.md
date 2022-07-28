@@ -10,7 +10,7 @@ registration box(in computer):<br>
 registration box(in phone):<br>
 <img src="https://github.com/AndryMSI3/Facebook-like/blob/main/screenshot/responsive2.png" align=center>
 
-The website is hosted on heroku on a PostgreSQL database:<br>
+The website is hosted on heroku with a PostgreSQL database:<br>
 <img src="https://github.com/AndryMSI3/Facebook-like/blob/main/screenshot/Heroku.png" align=center>
 
 Input error handling:<br>
